@@ -1,3 +1,15 @@
+// <copyright file="DetectedObject.cs" company="VS2026-.net10-playground">
+// Copyright (c) VS2026-.net10-playground. All rights reserved.
+// Licensed under the MIT License.
+// </copyright>
+
+// <author>vende6</author>
+// <date>2025-01-15</date>
+// <summary>
+// Model classes for object detection results from Azure Computer Vision.
+// Includes detected objects, bounding boxes, and analysis results.
+// </summary>
+
 namespace ObjectDetectionBlazor.Models;
 
 public class DetectedObject

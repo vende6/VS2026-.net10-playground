@@ -1,4 +1,17 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+    <copyright file="App.xaml" company="VS2026-.net10-playground">
+    Copyright (c) VS2026-.net10-playground. All rights reserved.
+    Licensed under the MIT License.
+    </copyright>
+
+    <author>vende6</author>
+    <date>2025-01-15</date>
+    <summary>
+    Main application XAML file for the MAUI app.
+    Defines application-level resources including colors, styles, and value converters.
+    </summary>
+-->
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ObjectDetectionMaui"

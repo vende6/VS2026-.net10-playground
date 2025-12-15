@@ -1,3 +1,16 @@
+// <copyright file="AzureObjectDetectionService.cs" company="VS2026-.net10-playground">
+// Copyright (c) VS2026-.net10-playground. All rights reserved.
+// Licensed under the MIT License.
+// </copyright>
+
+// <author>vende6</author>
+// <date>2025-01-15</date>
+// <summary>
+// Azure Computer Vision service implementation for MAUI app.
+// Uses DefaultAzureCredential for secure authentication.
+// Provides object detection capabilities for mobile and desktop platforms.
+// </summary>
+
 using Azure;
 using Azure.AI.Vision.ImageAnalysis;
 using Azure.Identity;

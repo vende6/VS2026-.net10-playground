@@ -1,3 +1,17 @@
+// <copyright file="ObjectDetectionViewModel.cs" company="VS2026-.net10-playground">
+// Copyright (c) VS2026-.net10-playground. All rights reserved.
+// Licensed under the MIT License.
+// </copyright>
+
+// <author>vende6</author>
+// <date>2025-01-15</date>
+// <summary>
+// ViewModel for the Object Detection page in MAUI app.
+// Handles image picking from gallery or camera, processes images through Azure Computer Vision,
+// and manages the UI state for displaying detection results.
+// Implements MVVM pattern with INotifyPropertyChanged.
+// </summary>
+
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

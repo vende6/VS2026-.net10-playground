@@ -1,5 +1,16 @@
 # Azure Object Detection Solution
 
+**Author:** vende6  
+**Repository:** https://github.com/vende6/VS2026-.net10-playground  
+**License:** MIT  
+**Created:** 2025-01-15  
+**Version:** 1.0.0  
+**Framework:** .NET 10.0  
+
+---
+
+## Overview
+
 This solution contains two applications that use Azure Computer Vision for object detection:
 
 1. **ObjectDetectionBlazor** - A Blazor Web App

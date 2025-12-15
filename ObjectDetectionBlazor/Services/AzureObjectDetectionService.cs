@@ -1,3 +1,16 @@
+// <copyright file="AzureObjectDetectionService.cs" company="VS2026-.net10-playground">
+// Copyright (c) VS2026-.net10-playground. All rights reserved.
+// Licensed under the MIT License.
+// </copyright>
+
+// <author>vende6</author>
+// <date>2025-01-15</date>
+// <summary>
+// Azure Computer Vision service implementation for object detection.
+// Uses DefaultAzureCredential for secure authentication with Managed Identity support.
+// Analyzes images and returns detected objects, tags, and captions.
+// </summary>
+
 using Azure;
 using Azure.AI.Vision.ImageAnalysis;
 using Azure.Identity;

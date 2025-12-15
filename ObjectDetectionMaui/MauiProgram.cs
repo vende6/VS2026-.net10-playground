@@ -1,4 +1,17 @@
-﻿using Microsoft.Extensions.Logging;
+﻿// <copyright file="MauiProgram.cs" company="VS2026-.net10-playground">
+// Copyright (c) VS2026-.net10-playground. All rights reserved.
+// Licensed under the MIT License.
+// </copyright>
+
+// <author>vende6</author>
+// <date>2025-01-15</date>
+// <summary>
+// Main entry point for the .NET MAUI application.
+// Configures services, fonts, and dependency injection.
+// Registers Azure Object Detection Service, ViewModels, and Pages.
+// </summary>
+
+using Microsoft.Extensions.Logging;
 using ObjectDetectionMaui.Services;
 using ObjectDetectionMaui.ViewModels;
 using ObjectDetectionMaui.Views;

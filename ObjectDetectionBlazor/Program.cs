@@ -1,3 +1,16 @@
+// <copyright file="Program.cs" company="VS2026-.net10-playground">
+// Copyright (c) VS2026-.net10-playground. All rights reserved.
+// Licensed under the MIT License.
+// </copyright>
+
+// <author>vende6</author>
+// <date>2025-01-15</date>
+// <summary>
+// Main entry point for the Blazor Web App.
+// Configures services, middleware, and the HTTP request pipeline.
+// Registers Azure Object Detection Service with dependency injection.
+// </summary>
+
 using ObjectDetectionBlazor.Components;
 using ObjectDetectionBlazor.Services;
 
