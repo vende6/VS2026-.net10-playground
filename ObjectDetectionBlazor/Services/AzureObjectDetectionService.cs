@@ -2,13 +2,14 @@ using Azure;
 using Azure.AI.Vision.ImageAnalysis;
 using Azure.Identity;
 using ObjectDetectionBlazor.Models;
+using AzureVisionResult = Azure.AI.Vision.ImageAnalysis.ImageAnalysisResult;
 
 namespace ObjectDetectionBlazor.Services;
 
 public interface IObjectDetectionService
 {
-    Task<ImageAnalysisResult> AnalyzeImageAsync(Stream imageStream);
-    Task<ImageAnalysisResult> AnalyzeImageAsync(string imageUrl);
+    Task<Models.ImageAnalysisResult> AnalyzeImageAsync(Stream imageStream);
+    Task<Models.ImageAnalysisResult> AnalyzeImageAsync(string imageUrl);
 }
 
 public class AzureObjectDetectionService : IObjectDetectionService
@@ -32,7 +33,7 @@ public class AzureObjectDetectionService : IObjectDetectionService
         _client = new ImageAnalysisClient(new Uri(endpoint), credential);
     }
 
-    public async Task<ImageAnalysisResult> AnalyzeImageAsync(Stream imageStream)
+    public async Task<Models.ImageAnalysisResult> AnalyzeImageAsync(Stream imageStream)
     {
         try
         {
@@ -52,7 +53,7 @@ public class AzureObjectDetectionService : IObjectDetectionService
         }
     }
 
-    public async Task<ImageAnalysisResult> AnalyzeImageAsync(string imageUrl)
+    public async Task<Models.ImageAnalysisResult> AnalyzeImageAsync(string imageUrl)
     {
         try
         {
@@ -70,9 +71,9 @@ public class AzureObjectDetectionService : IObjectDetectionService
         }
     }
 
-    private ImageAnalysisResult MapToResult(ImageAnalysisResult result)
+    private Models.ImageAnalysisResult MapToResult(AzureVisionResult result)
     {
-        var analysisResult = new ImageAnalysisResult
+        var analysisResult = new Models.ImageAnalysisResult
         {
             ImageWidth = result.Metadata.Width,
             ImageHeight = result.Metadata.Height
@@ -81,7 +82,7 @@ public class AzureObjectDetectionService : IObjectDetectionService
         if (result.Objects != null)
         {
             analysisResult.DetectedObjects = result.Objects.Values
-                .Select(obj => new DetectedObject
+                .Select(obj => new Models.DetectedObject
                 {
                     Name = obj.Tags.FirstOrDefault()?.Name ?? "Unknown",
                     Confidence = obj.Tags.FirstOrDefault()?.Confidence ?? 0,
