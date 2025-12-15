@@ -1,4 +1,18 @@
 @echo off
+REM ========================================
+REM Git Commit and Push Automation Script
+REM 
+REM Author: vende6
+REM Repository: https://github.com/vende6/VS2026-.net10-playground
+REM License: MIT
+REM Version: 1.0.0
+REM Date: 2025-01-15
+REM 
+REM Description:
+REM   Batch script to automatically stage, commit, and push all changes to GitHub.
+REM   Checks for Git availability, displays changes, and pushes to remote repository.
+REM ========================================
+
 REM Batch script to commit and push all changes to GitHub
 REM Run this script from the NewRepo directory
 

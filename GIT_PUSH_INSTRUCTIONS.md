@@ -1,5 +1,15 @@
 # Manual Git Commands to Push Changes
 
+**Author:** vende6  
+**Repository:** https://github.com/vende6/VS2026-.net10-playground  
+**License:** MIT  
+**Version:** 1.0.0  
+**Date:** 2025-01-15  
+
+---
+
+## Overview
+
 Since Git may not be available in your current PowerShell session, here are the manual commands to run:
 
 ## Option 1: Use the Automated Scripts

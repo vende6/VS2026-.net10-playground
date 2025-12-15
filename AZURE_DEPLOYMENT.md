@@ -1,5 +1,15 @@
 # Azure Deployment Guide
 
+**Author:** vende6  
+**Repository:** https://github.com/vende6/VS2026-.net10-playground  
+**License:** MIT  
+**Created:** 2025-01-15  
+**Version:** 1.0.0  
+
+---
+
+## Overview
+
 This guide provides step-by-step Azure CLI commands to set up and deploy the Object Detection applications.
 
 ## Prerequisites

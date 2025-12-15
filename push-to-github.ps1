@@ -1,3 +1,32 @@
+<#
+.SYNOPSIS
+    Git commit and push automation script for Object Detection Solution
+
+.DESCRIPTION
+    PowerShell script to automatically stage, commit, and push all changes to GitHub.
+    Checks for Git availability, displays changes, prompts for commit message,
+    and pushes to the remote repository.
+
+.AUTHOR
+    vende6
+
+.VERSION
+    1.0.0
+
+.DATE
+    2025-01-15
+
+.REPOSITORY
+    https://github.com/vende6/VS2026-.net10-playground
+
+.LICENSE
+    MIT License
+
+.EXAMPLE
+    .\push-to-github.ps1
+    Runs the script from the current directory
+#>
+
 # PowerShell script to commit and push all changes to GitHub
 # Run this script from the NewRepo directory
 

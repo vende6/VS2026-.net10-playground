@@ -27,6 +27,20 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
+		
+		<!-- Project Metadata -->
+		<Authors>vende6</Authors>
+		<Company>VS2026-.net10-playground</Company>
+		<Product>Object Detection MAUI App</Product>
+		<Description>.NET MAUI cross-platform app with Azure Computer Vision object detection. Pick photos from gallery or take new photos to detect objects with confidence scores, tags, and captions. Supports Android, iOS, Windows, and macOS.</Description>
+		<Copyright>Copyright (c) 2025 vende6. All rights reserved.</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/vende6/VS2026-.net10-playground</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageProjectUrl>https://github.com/vende6/VS2026-.net10-playground</PackageProjectUrl>
+		<Version>1.0.0</Version>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
 
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
 		<WindowsPackageType>None</WindowsPackageType>

@@ -1,3 +1,39 @@
+<#
+.SYNOPSIS
+    Automatic Git commit and push script for Object Detection Solution
+
+.DESCRIPTION
+    PowerShell script to automatically find Git, stage all changes, commit with
+    a comprehensive message, and push to GitHub. Includes error handling and
+    detailed status messages.
+
+.PARAMETER RepoPath
+    Path to the repository (defaults to script directory)
+
+.AUTHOR
+    vende6
+
+.VERSION
+    1.0.0
+
+.DATE
+    2025-01-15
+
+.REPOSITORY
+    https://github.com/vende6/VS2026-.net10-playground
+
+.LICENSE
+    MIT License
+
+.EXAMPLE
+    .\auto-commit-push.ps1
+    Runs the script from the current directory
+
+.EXAMPLE
+    .\auto-commit-push.ps1 -RepoPath "C:\path\to\repo"
+    Runs the script with a specific repository path
+#>
+
 # Auto-commit and push script
 param(
     [string]$RepoPath = $PSScriptRoot
