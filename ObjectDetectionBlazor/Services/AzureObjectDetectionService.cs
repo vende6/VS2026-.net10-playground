@@ -1,16 +1,3 @@
-// <copyright file="AzureObjectDetectionService.cs" company="VS2026-.net10-playground">
-// Copyright (c) VS2026-.net10-playground. All rights reserved.
-// Licensed under the MIT License.
-// </copyright>
-
-// <author>Damir</author>
-// <date>2025-01-15</date>
-// <summary>
-// Azure Computer Vision service implementation for object detection.
-// Uses DefaultAzureCredential for secure authentication with Managed Identity support.
-// Analyzes images and returns detected objects, tags, and captions.
-// </summary>
-
 using Azure;
 using Azure.AI.Vision.ImageAnalysis;
 using Azure.Identity;
@@ -20,8 +7,8 @@ namespace ObjectDetectionBlazor.Services;
 
 public interface IObjectDetectionService
 {
-    Task<ObjectDetectionResult> AnalyzeImageAsync(Stream imageStream);
-    Task<ObjectDetectionResult> AnalyzeImageAsync(string imageUrl);
+    Task<ImageAnalysisResult> AnalyzeImageAsync(Stream imageStream);
+    Task<ImageAnalysisResult> AnalyzeImageAsync(string imageUrl);
 }
 
 public class AzureObjectDetectionService : IObjectDetectionService
@@ -45,7 +32,7 @@ public class AzureObjectDetectionService : IObjectDetectionService
         _client = new ImageAnalysisClient(new Uri(endpoint), credential);
     }
 
-    public async Task<ObjectDetectionResult> AnalyzeImageAsync(Stream imageStream)
+    public async Task<ImageAnalysisResult> AnalyzeImageAsync(Stream imageStream)
     {
         try
         {
@@ -65,7 +52,7 @@ public class AzureObjectDetectionService : IObjectDetectionService
         }
     }
 
-    public async Task<ObjectDetectionResult> AnalyzeImageAsync(string imageUrl)
+    public async Task<ImageAnalysisResult> AnalyzeImageAsync(string imageUrl)
     {
         try
         {
@@ -83,9 +70,9 @@ public class AzureObjectDetectionService : IObjectDetectionService
         }
     }
 
-    private ObjectDetectionResult MapToResult(Azure.AI.Vision.ImageAnalysis.ImageAnalysisResult result)
+    private ImageAnalysisResult MapToResult(ImageAnalysisResult result)
     {
-        var analysisResult = new ObjectDetectionResult
+        var analysisResult = new ImageAnalysisResult
         {
             ImageWidth = result.Metadata.Width,
             ImageHeight = result.Metadata.Height
@@ -94,7 +81,7 @@ public class AzureObjectDetectionService : IObjectDetectionService
         if (result.Objects != null)
         {
             analysisResult.DetectedObjects = result.Objects.Values
-                .Select(obj => new Models.DetectedObject
+                .Select(obj => new DetectedObject
                 {
                     Name = obj.Tags.FirstOrDefault()?.Name ?? "Unknown",
                     Confidence = obj.Tags.FirstOrDefault()?.Confidence ?? 0,

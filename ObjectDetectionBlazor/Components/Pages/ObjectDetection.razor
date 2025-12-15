@@ -1,18 +1,3 @@
-@*
-<copyright file="ObjectDetection.razor" company="VS2026-.net10-playground">
-Copyright (c) VS2026-.net10-playground. All rights reserved.
-Licensed under the MIT License.
-</copyright>
-
-<author>Damir</author>
-<date>2025-01-15</date>
-    <summary>
-    Blazor component for object detection using Azure Computer Vision.
-    Allows users to upload images and displays detected objects with bounding boxes,
-    confidence scores, tags, and captions.
-    </summary>
-*@
-
 @page "/objectdetection"
 @using ObjectDetectionBlazor.Models
 @using ObjectDetectionBlazor.Services
@@ -147,7 +132,7 @@ Licensed under the MIT License.
 
 @code {
     private string? uploadedImageUrl;
-    private ObjectDetectionResult? analysisResult;
+    private ImageAnalysisResult? analysisResult;
     private bool isAnalyzing = false;
     private string? errorMessage;
     private const long MaxFileSize = 10 * 1024 * 1024; // 10MB

@@ -1,15 +1,3 @@
-// <copyright file="ValueConverters.cs" company="VS2026-.net10-playground">
-// Copyright (c) VS2026-.net10-playground. All rights reserved.
-// Licensed under the MIT License.
-// </copyright>
-
-// <author>Damir</author>
-// <date>2025-01-15</date>
-// <summary>
-// XAML value converters for UI binding.
-// Includes IsNotNullConverter and IsGreaterThanZeroConverter for conditional visibility.
-// </summary>
-
 using System.Globalization;
 
 namespace ObjectDetectionMaui.Converters;

@@ -5,20 +5,6 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
-    
-    <!-- Project Metadata -->
-    <Authors>Damir</Authors>
-    <Company>VS2026-.net10-playground</Company>
-    <Product>Object Detection Blazor App</Product>
-    <Description>Blazor Web App with Azure Computer Vision object detection capabilities. Upload images to detect objects with bounding boxes, confidence scores, tags, and captions.</Description>
-    <Copyright>Copyright (c) 2025 Damir. All rights reserved.</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/vende6/VS2026-.net10-playground</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/vende6/VS2026-.net10-playground</PackageProjectUrl>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
