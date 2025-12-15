@@ -8,7 +8,7 @@
     and pushes to the remote repository.
 
 .AUTHOR
-    vende6
+    Damir
 
 .VERSION
     1.0.0

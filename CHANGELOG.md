@@ -107,6 +107,6 @@ See the [issues page](https://github.com/vende6/VS2026-.net10-playground/issues)
 
 ---
 
-**Author:** vende6  
+**Author:** Damir (vende6)  
 **Repository:** https://github.com/vende6/VS2026-.net10-playground  
 **License:** MIT

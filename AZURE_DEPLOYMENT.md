@@ -1,6 +1,6 @@
 # Azure Deployment Guide
 
-**Author:** vende6  
+**Author:** Damir (vende6)  
 **Repository:** https://github.com/vende6/VS2026-.net10-playground  
 **License:** MIT  
 **Created:** 2025-01-15  

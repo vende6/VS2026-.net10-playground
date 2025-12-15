@@ -2,7 +2,7 @@
 REM ========================================
 REM Git Commit and Push Automation Script
 REM 
-REM Author: vende6
+REM Author: Damir
 REM Repository: https://github.com/vende6/VS2026-.net10-playground
 REM License: MIT
 REM Version: 1.0.0

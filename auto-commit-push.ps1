@@ -11,7 +11,7 @@
     Path to the repository (defaults to script directory)
 
 .AUTHOR
-    vende6
+    Damir
 
 .VERSION
     1.0.0

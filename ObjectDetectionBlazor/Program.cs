@@ -3,7 +3,7 @@
 // Licensed under the MIT License.
 // </copyright>
 
-// <author>vende6</author>
+// <author>Damir</author>
 // <date>2025-01-15</date>
 // <summary>
 // Main entry point for the Blazor Web App.

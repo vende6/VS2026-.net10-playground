@@ -2,7 +2,7 @@
 
 ## Project Lead & Main Author
 
-**vende6**
+**Damir**
 - GitHub: [@vende6](https://github.com/vende6)
 - Repository: [VS2026-.net10-playground](https://github.com/vende6/VS2026-.net10-playground)
 - Role: Project Creator, Lead Developer
