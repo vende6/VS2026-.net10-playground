@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ObjectDetectionBlazor/ObjectDetectionBlazor.csproj" />
+  <Project Path="ObjectDetectionMaui/ObjectDetectionMaui.csproj" />
+</Solution>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ObjectDetectionMaui.ViewModels"
+             x:Class="ObjectDetectionMaui.Views.ObjectDetectionPage"
+             Title="Object Detection">
+    
+    <ContentPage.BindingContext>
+        <vm:ObjectDetectionViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <Label Text="Azure Object Detection"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Pick Photo"
+                        Command="{Binding PickImageCommand}"
+                        IsEnabled="{Binding IsNotAnalyzing}"
+                        WidthRequest="150" />
+                
+                <Button Text="Take Photo"
+                        Command="{Binding TakePhotoCommand}"
+                        IsEnabled="{Binding IsNotAnalyzing}"
+                        WidthRequest="150" />
+            </HorizontalStackLayout>
+
+            <ActivityIndicator IsRunning="{Binding IsAnalyzing}"
+                             IsVisible="{Binding IsAnalyzing}"
+                             Color="{StaticResource Primary}"
+                             HeightRequest="50" />
+
+            <Label Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding HasError}"
+                   TextColor="Red"
+                   HorizontalTextAlignment="Center" />
+
+            <Border Stroke="{StaticResource Primary}"
+                    StrokeThickness="2"
+                    Padding="5"
+                    IsVisible="{Binding SelectedImage, Converter={StaticResource IsNotNullConverter}}">
+                <Image Source="{Binding SelectedImage}"
+                       Aspect="AspectFit"
+                       HeightRequest="300" />
+            </Border>
+
+            <Frame IsVisible="{Binding Caption, Converter={StaticResource IsNotNullConverter}}"
+                   BackgroundColor="{StaticResource Primary}"
+                   Padding="10"
+                   CornerRadius="5">
+                <VerticalStackLayout>
+                    <Label Text="Caption"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="{Binding Caption}"
+                           TextColor="White"
+                           FontSize="16" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame IsVisible="{Binding DetectedObjects.Count, Converter={StaticResource IsGreaterThanZeroConverter}}"
+                   Padding="10"
+                   CornerRadius="5">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Detected Objects"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                    
+                    <CollectionView ItemsSource="{Binding DetectedObjects}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10" Margin="0,5" BackgroundColor="{StaticResource Secondary}">
+                                    <HorizontalStackLayout Spacing="10" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding Name}"
+                                               VerticalOptions="Center"
+                                               FontSize="16"
+                                               HorizontalOptions="StartAndExpand" />
+                                        <Label VerticalOptions="Center"
+                                               FontSize="14"
+                                               TextColor="Gray">
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0:P0}">
+                                                    <Binding Path="Confidence" />
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+                                    </HorizontalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame IsVisible="{Binding Tags.Count, Converter={StaticResource IsGreaterThanZeroConverter}}"
+                   Padding="10"
+                   CornerRadius="5">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Tags"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                    
+                    <FlexLayout Wrap="Wrap" JustifyContent="Start">
+                        <FlexLayout.BindableLayout>
+                            <BindableLayout.ItemsSource>
+                                <Binding Path="Tags" />
+                            </BindableLayout.ItemsSource>
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="8,4" 
+                                           Margin="4"
+                                           BackgroundColor="{StaticResource Primary}"
+                                           CornerRadius="15">
+                                        <Label Text="{Binding .}"
+                                               TextColor="White"
+                                               FontSize="14" />
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout.BindableLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,180 @@
+@page "/objectdetection"
+@using ObjectDetectionBlazor.Models
+@using ObjectDetectionBlazor.Services
+@inject IObjectDetectionService ObjectDetectionService
+@rendermode InteractiveServer
+
+<PageTitle>Object Detection</PageTitle>
+
+<h1>Azure Object Detection</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Upload Image</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="imageUpload" class="form-label">Select an image file:</label>
+                        <InputFile OnChange="HandleFileSelected" class="form-control" accept="image/*" />
+                    </div>
+
+                    @if (isAnalyzing)
+                    {
+                        <div class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Analyzing...</span>
+                            </div>
+                            <p class="mt-2">Analyzing image...</p>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @errorMessage
+                        </div>
+                    }
+
+                    @if (uploadedImageUrl != null)
+                    {
+                        <div class="mt-3">
+                            <h4>Uploaded Image</h4>
+                            <div class="position-relative" style="display: inline-block;">
+                                <img src="@uploadedImageUrl" alt="Uploaded" class="img-fluid" style="max-width: 100%; height: auto;" />
+                                
+                                @if (analysisResult != null)
+                                {
+                                    @foreach (var obj in analysisResult.DetectedObjects)
+                                    {
+                                        var scaleX = 100.0 / analysisResult.ImageWidth;
+                                        var scaleY = 100.0 / analysisResult.ImageHeight;
+                                        var left = obj.BoundingBox.X * scaleX;
+                                        var top = obj.BoundingBox.Y * scaleY;
+                                        var width = obj.BoundingBox.Width * scaleX;
+                                        var height = obj.BoundingBox.Height * scaleY;
+
+                                        <div style="position: absolute; 
+                                                    left: @(left)%; 
+                                                    top: @(top)%; 
+                                                    width: @(width)%; 
+                                                    height: @(height)%; 
+                                                    border: 2px solid #00ff00; 
+                                                    box-sizing: border-box;">
+                                            <span style="background-color: #00ff00; 
+                                                         color: black; 
+                                                         padding: 2px 5px; 
+                                                         font-size: 12px;
+                                                         position: absolute;
+                                                         top: -20px;
+                                                         left: 0;">
+                                                @obj.Name (@obj.Confidence.ToString("P0"))
+                                            </span>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            @if (analysisResult != null)
+            {
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4>Analysis Results</h4>
+                    </div>
+                    <div class="card-body">
+                        @if (!string.IsNullOrEmpty(analysisResult.Caption))
+                        {
+                            <div class="mb-3">
+                                <h5>Caption</h5>
+                                <p class="text-muted">@analysisResult.Caption</p>
+                            </div>
+                        }
+
+                        <div class="mb-3">
+                            <h5>Detected Objects (@analysisResult.DetectedObjects.Count)</h5>
+                            <ul class="list-group">
+                                @foreach (var obj in analysisResult.DetectedObjects.OrderByDescending(o => o.Confidence))
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @obj.Name
+                                        <span class="badge bg-primary rounded-pill">@obj.Confidence.ToString("P0")</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        @if (analysisResult.Tags.Any())
+                        {
+                            <div class="mb-3">
+                                <h5>Tags</h5>
+                                <div>
+                                    @foreach (var tag in analysisResult.Tags)
+                                    {
+                                        <span class="badge bg-secondary me-1 mb-1">@tag</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string? uploadedImageUrl;
+    private ObjectDetectionResult? analysisResult;
+    private bool isAnalyzing = false;
+    private string? errorMessage;
+    private const long MaxFileSize = 10 * 1024 * 1024; // 10MB
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        errorMessage = null;
+        analysisResult = null;
+        uploadedImageUrl = null;
+
+        var file = e.File;
+
+        if (file.Size > MaxFileSize)
+        {
+            errorMessage = $"File size exceeds the maximum allowed size of {MaxFileSize / 1024 / 1024}MB.";
+            return;
+        }
+
+        try
+        {
+            isAnalyzing = true;
+
+            // Create a data URL for display
+            using var imageStream = file.OpenReadStream(MaxFileSize);
+            using var memoryStream = new MemoryStream();
+            await imageStream.CopyToAsync(memoryStream);
+            memoryStream.Position = 0;
+
+            var base64 = Convert.ToBase64String(memoryStream.ToArray());
+            uploadedImageUrl = $"data:{file.ContentType};base64,{base64}";
+
+            // Analyze the image
+            memoryStream.Position = 0;
+            analysisResult = await ObjectDetectionService.AnalyzeImageAsync(memoryStream);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error analyzing image: {ex.Message}";
+        }
+        finally
+        {
+            isAnalyzing = false;
+        }
+    }
+}
